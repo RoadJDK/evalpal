@@ -1,0 +1,21 @@
+{
+  "name": "evalpal",
+  "version": "1.0.0",
+  "description": "A nice way to communicate with your co-workers!",
+  "main": "main.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "electron ."
+  },
+  "repository": {
+    "type": "git",
+    "url": "git@github.com:RoadJDK/evalpal.git"
+  },
+  "bugs": {
+    "url": "https://github.com/RoadJDK/honest/issues"
+  },
+  "homepage": "https://github.com/RoadJDK/honest#readme",
+  "devDependencies": {
+    "electron": "^15.0.0"
+  }
+}
