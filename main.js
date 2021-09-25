@@ -38,7 +38,7 @@ ipcMain.on('login-message', (event, email, password) => {
   });
 
   function showNotification (title, body) {
-    var notification = new Notification({ title: title, body: body, icon: 'icons/icon.png' })
+    var notification = new Notification({ title: title, body: body, icon: 'icons/icon-big.png' })
     notification.on('click', () => {
       mb.window.loadFile('pages/popups/thanks.html')
       notification.removeAllListeners(['click'])
