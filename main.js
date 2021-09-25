@@ -17,16 +17,17 @@ const userPool = new AmazonCognitoIdentity.CognitoUserPool(poolData);
 
 const mb = menubar({preloadWindow: true, icon: 'icons/icon.png', tooltip: 'EVALPAL', browserWindow: { height: 800, width: 600, webPreferences: { nodeIntegration: true, contextIsolation: false, enableRemoteModule: true, preload: path.join(__dirname, 'preload.js')}}})
 
-let accessToken
+// TODO remove if not used 
+// let accessToken
+// let refreshToken
+
 let idToken
-let refreshToken
 
 var users = []
 
 let loggedIn = false
 
 mb.on('ready', () => {
-    //mb.window.webContents.openDevTools()
     console.log('app is ready');
     APIListener('praise')
     GetAllUsers()
@@ -95,10 +96,10 @@ ipcMain.on('login-message', (event, email, password) => {
       onSuccess: function (result) {
         loggedIn = true
         console.log('logged in!')
-        accessToken = result.getAccessToken().getJwtToken();
+        // TODO remove if not used
+        // accessToken = result.getAccessToken().getJwtToken();
         idToken = result.getIdToken().getJwtToken();
-        console.log(idToken)
-        refreshToken = result.getRefreshToken().getToken();
+        // refreshToken = result.getRefreshToken().getToken();
         mb.window.loadFile('pages/home.html')
       },
       onFailure: function(err) {
@@ -111,13 +112,13 @@ ipcMain.on('login-message', (event, email, password) => {
     var dto = dto1
 
     switch (dto) {
-      case "praise":
+      case "gratitude":
         showNotification('HUZZAH! 🎉', 'John sent you a compliment!')
         break;
       case "feedback":
         showNotification('Jeez! 😳', 'John sent a feedback about your work!')
         break;
-      case "check":
+      case "check-in":
         showNotification('How are you? 😊', 'John wants to know how your doing!')
         break;
       default:
