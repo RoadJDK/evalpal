@@ -60,6 +60,7 @@ ipcMain.on('login-message', (event, email, password) => {
         }
         console.log('signed up!')
         cognitoUser = result.user;
+        showNotification("Welcome!", "Please confirm your email before you can login")
         mb.window.loadFile('./index.html')
     });
   }
