@@ -1,71 +1,43 @@
 <!DOCTYPE html>
-<html>
-  <head>
-    <meta charset="UTF-8">
+<html lang="en">
+<head>
     <link rel="stylesheet" href="style.css">
     <link href="https://unpkg.com/tailwindcss@^2/dist/tailwind.min.css" rel="stylesheet">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Roboto+Mono&display=swap" rel="stylesheet">
-    <title>EVALPAL</title>
-  </head>
-  <body>
-      <div class="container">
-        <div class="header">
-            <nav class="flex items-center flex-wrap p-6">
-                <img src="./icons/feedback-50.png" alt="logo">
-                <a href="./pages/login/sign_up.html">
-                    <span class="font-semibold text-xl tracking-tight ml-6">
-                        evalpal
-                    </span>
+    <title>Sign In</title>
+    <script src="preload.js"></script>
+</head>
+<body>
+    <div class="container p-12">
+         <!-- Heading -->
+         <div class="text-4xl font-bold mb-8 col-span-2">
+            Welcome Back! Sign In.
+        </div>
+        <!-- Form Content -->
+        <form>
+            <label for="email" class="block text-grey-darker text-sm font-bold mb-2">
+                Email
+            </label>
+            <input type="email" id="email_l" class="shadow appearance-none border rounded w-full py-2 px-3 text-grey-darker mb-4">
+            <label for="password" class="block text-grey-darker text-sm font-bold mb-2">
+                Password
+            </label>
+            <p class="text-red-300 text-xs italic">Please enter a password.</p>
+            <input type="password" id="password_l" class="shadow appearance-none border rounded w-full py-2 px-3 text-grey-darker mb-4">
+            <!-- Form Buttons -->
+            <div class="flex items-center justify-between">
+                <a href="pages/home.html">
+                    <button id="login" type="submit" class="bg-blue-100 hover:bg-blue-300 font-bold py-2 px-4 rounded" type="button">
+                        Sign In
+                    </button>
                 </a>
-            </nav>
+        </form>
+            <a href="pages/login/sign_up.html" class="inline-block align-baseline font-bold text-sm text-blue-100 hover:text-blue-300">
+                Don't Have An Account?
+            </a>
         </div>
-        <div class="content">
-            <div class="tree">
-                <ul>
-                  <li> <strong>cool company</strong> 
-                    <ul>
-                      <li>ceo
-                        <ul> 
-                          <li> 
-                            <a href="pages/view_profile.html">
-                                michael hunt
-                            </a>
-                            <ul>
-                                <li>human resources
-                                    <ul>
-                                        <li> 
-                                            <a href="pages/send_message.html">
-                                                curious daniel
-                                            </a>
-                                        </li>
-                                    </ul>
-                                </li>
-                                <li>strategy & innovation
-                                    <ul>
-                                        <li>
-                                            <a href="./pages/popups/receiving/thanks.html">
-                                                funny philippe
-                                            </a>
-                                        </li>
-                                        <li>
-                                            <a href="./pages/popups/receiving/check.html">
-                                                interesting max
-                                            </a>
-                                        </li>
-                                    </ul>
-                                </li>
-                            </ul>
-                          </li>
-                        </ul>
-                      </li>
-                    </li>
-                </ul>
-            </div>
-        </div>
-      </div>
-    <script>window.onload=function(){fadeIn('body')};</script>
-    <script src="custom.js"></script>
-  </body>
+    </div>
+</body>
 </html>
