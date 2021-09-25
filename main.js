@@ -20,7 +20,7 @@ const poolData = {
 const mb = menubar({icon: 'icons/icon.png', tooltip: 'EVALPAL', browserWindow: { height: 800, width: 600 }});
 
 mb.on('ready', () => {
-    console.log('app is ready');
+    console.log('EvalPal is launched!');
     APIListener('praise')
     //RegisterUser()
     //LogIn()
