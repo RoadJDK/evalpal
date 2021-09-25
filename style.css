@@ -1,0 +1,35 @@
+* {
+    font-family: Arial, Helvetica, sans-serif;
+    margin: 0;
+    padding: 0;
+    text-decoration: none;
+    list-style-type: none;
+    color: black;
+}
+
+.header {
+    font-weight: bold;
+    font-size: large;
+    margin-left: 10px;
+    margin-top: 20px;
+}
+
+.content {
+    margin: 10px;
+}
+
+li {
+    margin: 10px;
+}
+
+.level1 {
+    margin-left: 10px;
+}
+
+.level2 {
+    margin-left: 30px;
+}
+
+.level3 {
+    margin-left: 50px;
+}
