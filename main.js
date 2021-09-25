@@ -76,10 +76,6 @@ mb.on('ready', () => {
     });
   }
 
-  function Test() {
-    alert('Alert in Electron');
-  }
-
   function APIListener(dto1) {
     var dto = dto1
 
