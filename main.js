@@ -6,8 +6,8 @@ const AmazonCognitoIdentity = require('amazon-cognito-identity-js')
 global.fetch = require('node-fetch')
 
 const poolData = {    
-  UserPoolId : "us-east-2_1lrTgPl9I", 
-  ClientId : "4g5mo2d6h0vqi1j82rtbu70v9u"
+  UserPoolId : "us-east-2_oOn7RJX94", 
+  ClientId : "qlp8sr3ohoa53lp5uhoprafha"
   };
 
 const userPool = new AmazonCognitoIdentity.CognitoUserPool(poolData);
@@ -18,6 +18,8 @@ let accessToken
 let idToken
 let refreshToken
 
+let loggedIn = true
+
 mb.on('ready', () => {
     mb.window.webContents.openDevTools()
     console.log('app is ready');
@@ -27,6 +29,13 @@ mb.on('ready', () => {
 mb.on('hide', () => {
   console.log('window closed')
   mb.window.loadFile('index.html')
+})
+
+mb.on('show', () => {
+  console.log('window opened')
+  if (loggedIn) {
+    mb.window.loadFile('pages/home.html')
+  }
 })
 
 ipcMain.on('signup-message', (event, firstname, name, email, password) => {
@@ -78,6 +87,7 @@ ipcMain.on('login-message', (event, email, password) => {
     var cognitoUser = new AmazonCognitoIdentity.CognitoUser(userData);
     cognitoUser.authenticateUser(authenticationDetails, {
       onSuccess: function (result) {
+        loggedIn = true
         console.log('logged in!')
         accessToken = result.getAccessToken().getJwtToken();
         idToken = result.getIdToken().getJwtToken();
