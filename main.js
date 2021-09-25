@@ -1,21 +1,15 @@
-const { menubar } = require('menubar');
+const { menubar } = require('menubar')
 const { Notification } = require('electron')
 
-const AmazonCognitoIdentity = require('amazon-cognito-identity-js');
-const CognitoUserPool = AmazonCognitoIdentity.CognitoUserPool;
-const AWS = require('aws-sdk');
-const request = require('request');
-const jwkToPem = require('jwk-to-pem');
-const jwt = require('jsonwebtoken');
-global.fetch = require('node-fetch');
+const AmazonCognitoIdentity = require('amazon-cognito-identity-js')
+global.fetch = require('node-fetch')
 
 const poolData = {    
   UserPoolId : "us-east-2_1lrTgPl9I", 
   ClientId : "4g5mo2d6h0vqi1j82rtbu70v9u"
-  }; 
-  const pool_region = 'us-east-2';
+  };
 
-  const userPool = new AmazonCognitoIdentity.CognitoUserPool(poolData);
+const userPool = new AmazonCognitoIdentity.CognitoUserPool(poolData);
 
 const mb = menubar({icon: 'icons/icon.png', tooltip: 'EVALPAL', browserWindow: { height: 800, width: 600 }});
 
