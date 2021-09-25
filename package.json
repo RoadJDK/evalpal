@@ -19,7 +19,13 @@
     "electron": "^15.0.0"
   },
   "dependencies": {
+    "amazon-cognito-identity-js": "^5.1.2",
+    "aws-sdk": "^2.995.0",
     "electron-notifications": "^1.0.0",
-    "menubar": "^9.0.5"
+    "jsonwebtoken": "^8.5.1",
+    "jwk-to-pem": "^2.0.5",
+    "menubar": "^9.0.5",
+    "node-fetch": "^2.6.5",
+    "request": "^2.88.2"
   }
 }
