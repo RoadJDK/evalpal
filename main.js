@@ -60,6 +60,7 @@ ipcMain.on('login-message', (event, email, password) => {
         }
         console.log('signed up!')
         cognitoUser = result.user;
+        mb.window.loadFile('./index.html')
     });
   }
 
@@ -77,9 +78,10 @@ ipcMain.on('login-message', (event, email, password) => {
     cognitoUser.authenticateUser(authenticationDetails, {
       onSuccess: function (result) {
         console.log('logged in!')
-          accessToken = result.getAccessToken().getJwtToken();
-          idToken = result.getIdToken().getJwtToken();
-          refreshToken = result.getRefreshToken().getToken();
+        accessToken = result.getAccessToken().getJwtToken();
+        idToken = result.getIdToken().getJwtToken();
+        refreshToken = result.getRefreshToken().getToken();
+        mb.window.loadFile('pages/home.html')
       },
       onFailure: function(err) {
           console.log(err);

@@ -9,9 +9,9 @@ window.onload = function() {
             let name = document.getElementById("name_s").value;
             let email = document.getElementById("email_s").value;
             let password = document.getElementById("password_s").value;
-        
+
             const { ipcRenderer } = require('electron')
-        
+
             ipcRenderer.send('signup-message', firstname, name, email, password)
         })
     } else {
