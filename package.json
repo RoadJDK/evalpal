@@ -19,6 +19,7 @@
     "electron": "^15.0.0"
   },
   "dependencies": {
+    "electron-notifications": "^1.0.0",
     "menubar": "^9.0.5"
   }
 }
