@@ -1,6 +1,9 @@
 window.onload = function() {
     let signupbutton = document.getElementById('signup')
     let login = document.getElementById('login')
+    let feedback = document.getElementById('feedback')
+    let thank = document.getElementById('thank')
+    let checkin = document.getElementById('checkin')
 
     if (signupbutton != null) {
         signupbutton.addEventListener('click', function() {
@@ -25,4 +28,25 @@ window.onload = function() {
             ipcRenderer.send('login-message', email, password )
         })
     }
+
+    feedback.addEventListener('click', function() {
+        const { ipcRenderer } = require('electron')
+        
+
+
+    })
+
+    checkin.addEventListener('click', function() {
+        const { ipcRenderer } = require('electron')
+
+        
+    })
+
+    thank.addEventListener('click', function() {
+        const { ipcRenderer } = require('electron')
+
+        
+    })
+
+
 }
