@@ -11,7 +11,7 @@ const poolData = {
 
 const userPool = new AmazonCognitoIdentity.CognitoUserPool(poolData);
 
-const mb = menubar({icon: 'icons/icon.png', tooltip: 'EVALPAL', browserWindow: { height: 800, width: 600 }});
+const mb = menubar({preloadWindow: true, icon: 'icons/icon.png', tooltip: 'EVALPAL', browserWindow: { height: 800, width: 600 }});
 
 mb.on('ready', () => {
     console.log('app is ready');
@@ -21,9 +21,15 @@ mb.on('ready', () => {
     //showNotification()
   });
 
+mb.on('hide', () => {
+  console.log('window closed')
+  mb.window.loadFile('index.html')
+})
+
   function showNotification (title, body) {
     var notification = new Notification({ title: title, body: body, icon: 'icons/icon.png' })
     notification.on('click', () => {
+      mb.window.loadURL('file://' + __dirname + '/pages/popups/thanks.html')
       notification.removeAllListeners(['click'])
       mb.showWindow()
     })
