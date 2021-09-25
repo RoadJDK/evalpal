@@ -21,7 +21,7 @@ const mb = menubar({icon: 'icons/icon.png', tooltip: 'EVALPAL', browserWindow: {
 
 mb.on('ready', () => {
     console.log('app is ready');
-    APIListener('check')
+    APIListener('praise')
     //RegisterUser()
     //LogIn()
     //showNotification()
