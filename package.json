@@ -17,5 +17,8 @@
   "homepage": "https://github.com/RoadJDK/honest#readme",
   "devDependencies": {
     "electron": "^15.0.0"
+  },
+  "dependencies": {
+    "menubar": "^9.0.5"
   }
 }
