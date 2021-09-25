@@ -18,7 +18,7 @@ let accessToken
 let idToken
 let refreshToken
 
-let loggedIn = true
+let loggedIn = false
 
 mb.on('ready', () => {
     mb.window.webContents.openDevTools()
