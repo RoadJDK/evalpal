@@ -28,7 +28,7 @@ mb.on('ready', () => {
   });
 
   function showNotification (title, body) {
-    var notification = new Notification({ title: title, body: body, icon: 'icons/icon.png' })
+    var notification = new Notification({ title: title, body: body, icon: 'icons/icon-big.png' })
     notification.on('click', () => {
       notification.removeAllListeners(['click'])
       mb.showWindow()
