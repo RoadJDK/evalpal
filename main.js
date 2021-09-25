@@ -17,26 +17,23 @@ const poolData = {
 
   const userPool = new AmazonCognitoIdentity.CognitoUserPool(poolData);
 
-const NOTIFICATION_TITLE = 'You got a new message!🎉'
-const NOTIFICATION_BODY = 'Open the app to see it'
-
-const mb = menubar({icon: 'icons/icon.png',
-tooltip: 'EVALPAL'});
+const mb = menubar({icon: 'icons/icon.png', tooltip: 'EVALPAL', browserWindow: { height: 800, width: 600 }});
 
 mb.on('ready', () => {
     console.log('app is ready');
+    APIListener('check')
     //RegisterUser()
     //LogIn()
     //showNotification()
   });
 
-  function showNotification () {
-    var notification = new Notification({ title: NOTIFICATION_TITLE, body: NOTIFICATION_BODY, icon: 'icons/icon.png' })
-    notification.show()
-    notification.on('click', (event, arg)=>{
-      console.log('clicked')
+  function showNotification (title, body) {
+    var notification = new Notification({ title: title, body: body, icon: 'icons/icon.png' })
+    notification.on('click', () => {
+      notification.removeAllListeners(['click'])
       mb.showWindow()
     })
+    notification.show()
   }
 
   function RegisterUser() {
@@ -77,4 +74,22 @@ mb.on('ready', () => {
       },
 
     });
+  }
+
+  function APIListener(dto1) {
+    var dto = dto1
+
+    switch (dto) {
+      case "praise":
+        showNotification('HUZZAH! 🎉', 'John sent you a compliment!')
+        break;
+      case "feedback":
+        showNotification('Jeez! 😳', 'John sent a feedback about your work!')
+        break;
+      case "check":
+        showNotification('How are you? 😊', 'John wants to know how your doing!')
+        break;
+      default:
+        break;
+    }
   }
