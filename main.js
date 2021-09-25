@@ -5,10 +5,13 @@ const path = require('path')
 const AmazonCognitoIdentity = require('amazon-cognito-identity-js')
 global.fetch = require('node-fetch')
 
+const request = require('request')
+
 const poolData = {    
   UserPoolId : "us-east-2_oOn7RJX94", 
   ClientId : "qlp8sr3ohoa53lp5uhoprafha"
   };
+
 
 const userPool = new AmazonCognitoIdentity.CognitoUserPool(poolData);
 
@@ -18,12 +21,15 @@ let accessToken
 let idToken
 let refreshToken
 
+var users = []
+
 let loggedIn = false
 
 mb.on('ready', () => {
     //mb.window.webContents.openDevTools()
     console.log('app is ready');
     APIListener('praise')
+    GetAllUsers()
   });
 
 mb.on('hide', () => {
@@ -91,6 +97,7 @@ ipcMain.on('login-message', (event, email, password) => {
         console.log('logged in!')
         accessToken = result.getAccessToken().getJwtToken();
         idToken = result.getIdToken().getJwtToken();
+        console.log(idToken)
         refreshToken = result.getRefreshToken().getToken();
         mb.window.loadFile('pages/home.html')
       },
@@ -116,4 +123,23 @@ ipcMain.on('login-message', (event, email, password) => {
       default:
         break;
     }
+  }
+
+  function UsersCallback(error, response, body) {
+    if (!error && response.statusCode == 200) {
+      const obj = JSON.parse(body)[1]
+      console.log(obj.email)
+      users = obj
+    }
+  }
+
+  function GetAllUsers() {
+    const options = {
+      url: 'https://75rnmqrek8.execute-api.us-east-2.amazonaws.com/hack/users',
+      headers: {
+        'Authorization': 'eyJraWQiOiJ2ZVRGQjJZWVBOZjB6TzBxSStYMFZMVFcxUEpvN2dOdTBjS0dudklpbytFPSIsImFsZyI6IlJTMjU2In0.eyJzdWIiOiJiZGNkYmM4ZS0wNTVjLTQ2NzEtOWQ4MS1hMzQ0OGFjOTU2NjIiLCJlbWFpbF92ZXJpZmllZCI6dHJ1ZSwiaXNzIjoiaHR0cHM6XC9cL2NvZ25pdG8taWRwLnVzLWVhc3QtMi5hbWF6b25hd3MuY29tXC91cy1lYXN0LTJfb09uN1JKWDk0IiwiY29nbml0bzp1c2VybmFtZSI6ImJkY2RiYzhlLTA1NWMtNDY3MS05ZDgxLWEzNDQ4YWM5NTY2MiIsIm9yaWdpbl9qdGkiOiIwNDkwYzljZi1kNDU1LTQyOTAtYjI0Mi05YjhkNzBhZjc3ZDciLCJhdWQiOiJxbHA4c3Izb2hvYTUzbHA1dWhvcHJhZmhhIiwiZXZlbnRfaWQiOiI1MGFkOGRlNi1jNmE4LTQ5YWItYTRmNC1hYWZkMDc4NDg2NjEiLCJ0b2tlbl91c2UiOiJpZCIsImF1dGhfdGltZSI6MTYzMjU5NjUwNywibmFtZSI6Ik1haWJhY2giLCJleHAiOjE2MzI2MDAxMDcsImlhdCI6MTYzMjU5NjUwNywiZmFtaWx5X25hbWUiOiJUaW1vIiwianRpIjoiOTkwZWYzYjEtZTIzZC00NmVlLTg1ZmEtODVmNjFmOGNjYTgwIiwiZW1haWwiOiJtdGltby5vZmZpY2lhbEBnbWFpbC5jb20ifQ.LruVnV3I2V5V37NoLrab0u2xQPJCRYXGMaSSh2J4SOcC5gVsuWXddnBjfQA6TDqy2_g1P4v6_uW-fVQeDCLj-Stm1k-sk_12H1fOcy7gQnQlcqwWgAoH0-ykwklRRna9zIXthUN9yeqtnIdiZH9ZvN8_GQaw_CEzj3bPO2GSm0-DbMyeQ8nvu32yfAWkkRID8RR0qT91lapiKdYLE0JAvBJmBiKmLwdGguRaezPl5mGS-b9ucvWcRcwDHptLptcdeAtPKCEgFXYzSqG4HMcO_1E0Ch5NoNvVZ7L5oS5w9FN8oVVhMIrn9O7TKgQtzXon8rRhfh8WcVeN0c60K8Bf9Q'
+      }
+    }
+
+    request(options, UsersCallback)
   }
