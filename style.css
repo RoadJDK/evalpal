@@ -8,9 +8,6 @@
 }
 
 .container {
-    display: grid;
-    grid-template-columns: repeat(3, 1fr);
-    grid-gap: 10px;
     border-radius: 10px;
 }
 
@@ -103,5 +100,13 @@ li {
 }
 .tree ul a:hover {
     border-bottom: 3px solid #91CDFE;
+}
+
+h1 {
+    font-family: 'Roboto';
+}
+
+h3 {
+    font-family: 'Roboto Mono', Helvetica, sans-serif;
 }
 
