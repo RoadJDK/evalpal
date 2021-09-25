@@ -29,7 +29,7 @@ mb.on('hide', () => {
   function showNotification (title, body) {
     var notification = new Notification({ title: title, body: body, icon: 'icons/icon.png' })
     notification.on('click', () => {
-      mb.window.loadURL('file://' + __dirname + '/pages/popups/thanks.html')
+      mb.window.loadFile('pages/popups/thanks.html')
       notification.removeAllListeners(['click'])
       mb.showWindow()
     })
