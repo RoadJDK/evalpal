@@ -21,7 +21,7 @@ let refreshToken
 let loggedIn = false
 
 mb.on('ready', () => {
-    mb.window.webContents.openDevTools()
+    //mb.window.webContents.openDevTools()
     console.log('app is ready');
     APIListener('praise')
   });
