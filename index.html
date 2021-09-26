@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <link rel="stylesheet" href="style.css">
     <link href="https://unpkg.com/tailwindcss@^2/dist/tailwind.min.css" rel="stylesheet">
@@ -9,13 +10,12 @@
     <title>Sign In</title>
     <script src="preload.js"></script>
 </head>
+
 <body>
     <div class="container p-12">
-         <!-- Heading -->
-         <div class="text-4xl font-bold mb-8 col-span-2">
+        <div class="text-4xl font-bold mb-8 col-span-2">
             Welcome Back! Sign In.
         </div>
-        <!-- Form Content -->
         <form>
             <label for="email" class="block text-grey-darker text-sm font-bold mb-2">
                 Email
@@ -26,7 +26,6 @@
             </label>
             <p class="text-red-300 text-xs italic">Please enter a password.</p>
             <input type="password" id="password_l" class="shadow appearance-none border rounded w-full py-2 px-3 text-grey-darker mb-4">
-            <!-- Form Buttons -->
             <div class="flex items-center justify-between">
                 <a href="pages/home.html">
                     <button id="login" type="button" class="bg-blue-100 hover:bg-blue-300 font-bold py-2 px-4 rounded" type="button">
@@ -34,10 +33,11 @@
                     </button>
                 </a>
         </form>
-            <a href="pages/login/sign_up.html" class="inline-block align-baseline font-bold text-sm text-blue-100 hover:text-blue-300">
+        <a href="pages/login/sign_up.html" class="inline-block align-baseline font-bold text-sm text-blue-100 hover:text-blue-300">
                 Don't Have An Account?
             </a>
         </div>
     </div>
 </body>
+
 </html>

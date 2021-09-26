@@ -27,7 +27,6 @@ let loggedIn = false
 
 // Set up general thins
 mb.on('ready', () => {
-    // mb.window.webContents.openDevTools()
     console.log('app is ready');
     APIListener('check-in')
 });
@@ -65,13 +64,13 @@ function ShowNotification(title, body) {
     notification.show()
     notification.on('click', () => {
         if (notification.title == 'HUZZAH! 🎉') {
-            mb.window.loadFile('pages/popups/recieving/thanks.html')
+            mb.window.loadFile('pages/popups/receiving/thanks.html')
         } else if (notification.title == 'Jeez! 😳') {
-            mb.window.loadFile('pages/popups/recieving/feedback.html')
+            mb.window.loadFile('pages/popups/receiving/feedback.html')
         } else {
-            mb.window.loadFile('pages/popups/recieving/check.html')
+            mb.window.loadFile('pages/popups/receiving/check.html')
         }
-        mb.window.loadFile('pages/popups/recieving/check.html')
+        mb.window.loadFile('pages/popups/receiving/check.html')
         notification.removeAllListeners(['click'])
         mb.showWindow()
     })
