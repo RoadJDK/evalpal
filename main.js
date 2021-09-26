@@ -21,7 +21,7 @@ const poolData = {
 
 const userPool = new AmazonCognitoIdentity.CognitoUserPool(poolData);
 
-const mb = menubar({ preloadWindow: true, icon: 'icons/icon.png', tooltip: 'EVALPAL', browserWindow: { height: 800, width: 600, webPreferences: { nodeIntegration: true, contextIsolation: false, enableRemoteModule: true, preload: path.join(__dirname, 'preload.js') } } })
+const mb = menubar({preloadWindow: true, icon: './icons/icon.png', tooltip: 'EVALPAL', browserWindow: { height: 800, width: 600, webPreferences: { nodeIntegration: true, contextIsolation: false, enableRemoteModule: true, preload: path.join(__dirname, 'preload.js')}}})
 
 // TODO remove if not used 
 // let accessToken
@@ -90,13 +90,20 @@ ipcMain.on('feedback', (event) => {
 // Custom functions
 function ShowNotification(title, body) {
     var notification = new Notification({ title: title, body: body, icon: 'icons/icon-big.png' })
-    notification.on('click', () => {
-        mb.window.loadFile('pages/popups/thanks.html')
-        notification.removeAllListeners(['click'])
-        mb.showWindow()
-    })
     notification.show()
-}
+    notification.on('click', () => {
+      if (notification.title == 'HUZZAH! 🎉') {
+        mb.window.loadFile('pages/popups/recieving/thanks.html')
+      } else if (notification.title == 'Jeez! 😳') {
+        mb.window.loadFile('pages/popups/recieving/feedback.html')
+      } else {
+        mb.window.loadFile('pages/popups/recieving/check.html')
+      }
+        mb.window.loadFile('pages/popups/recieving/check.html')
+      notification.removeAllListeners(['click'])
+      mb.showWindow()
+    })
+  }
 
 function RegisterUser(name, firstname, email, password) {
     var attributeList = [];
