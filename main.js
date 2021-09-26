@@ -27,8 +27,9 @@ let loggedIn = false
 
 // Set up general thins
 mb.on('ready', () => {
+    // mb.window.webContents.openDevTools()
     console.log('app is ready');
-    APIListener('praise')
+    APIListener('check-in')
 });
 
 mb.on('hide', () => {
@@ -133,13 +134,5 @@ function APIListener(dto1) {
             break;
         default:
             break;
-    }
-}
-
-function UsersCallback(error, response, body) {
-    if (!error && response.statusCode == 200) {
-        const obj = JSON.parse(body)[1]
-        console.log(obj.email)
-        users = obj
     }
 }

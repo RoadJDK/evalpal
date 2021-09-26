@@ -45,6 +45,19 @@
             </a>
         </div>
     </div>
+    <script>
+        function required() {
+            console.log('called');
+            var empt = document.forms["form1"]["feedback"].value;
+            if (empt == "") {
+                console.log("Please input a Value");
+                return false;
+            } else {
+                console.log('Code has accepted : you can try another');
+                return true;
+            }
+        }
+    </script>
 </body>
 
 </html>
