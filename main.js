@@ -93,14 +93,16 @@ function ShowNotification(title, body) {
     var notification = new Notification({ title: title, body: body, icon: 'icons/icon-big.png' })
     notification.show()
     notification.on('click', () => {
-      if (notification.title == 'HUZZAH! 🎉') {
-        mb.window.loadFile('pages/popups/recieving/thanks.html')
-      } else if (notification.title == 'Jeez! 😳') {
-        mb.window.loadFile('pages/popups/recieving/feedback.html')
-      } else {
-        mb.window.loadFile('pages/popups/recieving/check.html')
-      }
-        mb.window.loadFile('pages/popups/recieving/check.html')
+        if (loggedIn != true) {
+            mb.window.loadFile('pages/popups/receiving/not-logged-in.html')
+        }
+        else if (notification.title == 'HUZZAH! 🎉') {
+            mb.window.loadFile('pages/popups/receiving/thanks.html')
+        } else if (notification.title == 'Jeez! 😳') {
+            mb.window.loadFile('pages/popups/receiving/feedback.html')
+        } else {
+            mb.window.loadFile('pages/popups/receiving/check.html')
+        }
       notification.removeAllListeners(['click'])
       mb.showWindow()
     })
