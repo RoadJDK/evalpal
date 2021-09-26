@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <link rel="stylesheet" href="../../style.css">
     <link href="https://unpkg.com/tailwindcss@^2/dist/tailwind.min.css" rel="stylesheet">
@@ -8,6 +9,7 @@
     <link href="https://fonts.googleapis.com/css2?family=Roboto+Mono&display=swap" rel="stylesheet">
     <title>Send Feedback</title>
 </head>
+
 <body>
     <div class="container p-12">
         <!-- Heading -->
@@ -17,30 +19,50 @@
             </div>
             <div>
                 <a href="../view_profile.html">
-                    <button class="bg-gray-100 hover:bg-gray-300 py-2 px-4 rounded-full underline tracking-wider w-8/12" >
+                    <button
+                        class="bg-gray-100 hover:bg-gray-300 py-2 px-4 rounded-full underline tracking-wider w-8/12">
                         return
                     </button>
                 </a>
             </div>
         </div>
         <!-- Form Content -->
-        <h2 class="text-2xl tracking-wider mb-8">
-            What do you have to say to Michael?
-        </h2>
-        <textarea class="w-full px-3 py-2 text-gray-700 border rounded-lg focus:outline-none" name="feedback" id="feedbackField" rows="10"></textarea>
-        <!-- Submission & Cancel Button -->
-        <div class="space-x-7">
-            <a href="./confirmations/feedback-confirmation.html">
-                <button class="bg-green-100 hover:bg-green-300 py-2 px-4 rounded-full mt-8 underline tracking-wider w-1/3">
-                    submit
-                </button>
-            </a>
-            <a href="../view_profile.html">
-                <button class="bg-red-100 hover:bg-red-300 py-2 px-4 rounded-full mt-8 underline tracking-wider w-1/3">
-                    cancel
-                </button>
-            </a>
-        </div>
+        <form action="./confirmations/feedback-confirmation.html" name="form1" onsubmit="required()">
+            <h2 class="text-2xl tracking-wider mb-8">
+                What do you have to say to Michael?
+            </h2>
+            <textarea class="w-full px-3 py-2 text-gray-700 border rounded-lg focus:outline-none" name="feedback"
+                id="feedbackField" rows="10"></textarea>
+            <!-- Submission & Cancel Button -->
+            <div class="space-x-7">
+                <a href="./confirmations/feedback-confirmation.html">
+                    <button type="submit"
+                        class="bg-green-100 hover:bg-green-300 py-2 px-4 rounded-full mt-8 underline tracking-wider w-1/3">
+                        submit
+                    </button>
+                </a>
+                <a href="../view_profile.html">
+                    <button class="bg-red-100 hover:bg-red-300 py-2 px-4 rounded-full mt-8 underline tracking-wider w-1/3">
+                        cancel
+                    </button>
+                </a>
+            </div>
+        </form>
     </div>
+    <script>
+        function required() {
+            console.log('called');
+            var empt = document.forms["form1"]["feedback"].value;
+            if (empt == "") {
+                console.log("Please input a Value");
+                return false;
+            }
+            else {
+                console.log('Code has accepted : you can try another');
+                return true;
+            }
+        }
+    </script>
 </body>
+
 </html>

@@ -28,6 +28,7 @@ var users = []
 let loggedIn = false
 
 mb.on('ready', () => {
+    // mb.window.webContents.openDevTools()
     console.log('app is ready');
     APIListener('praise')
     GetAllUsers()
