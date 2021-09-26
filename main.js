@@ -21,16 +21,7 @@ const poolData = {
 
 const userPool = new AmazonCognitoIdentity.CognitoUserPool(poolData);
 
-const mb = menubar({preloadWindow: true, icon: './icons/icon.png', tooltip: 'EVALPAL', browserWindow: { height: 800, width: 600, webPreferences: { nodeIntegration: true, contextIsolation: false, enableRemoteModule: true, preload: path.join(__dirname, 'preload.js')}}})
-
-// TODO remove if not used 
-// let accessToken
-// let refreshToken
-
-// saves aws api token
-var idToken
-
-var users = []
+const mb = menubar({ preloadWindow: true, icon: './icons/icon.png', tooltip: 'EVALPAL', browserWindow: { height: 800, width: 600, webPreferences: { nodeIntegration: true, contextIsolation: false, enableRemoteModule: true, preload: path.join(__dirname, 'preload.js') } } })
 
 let loggedIn = false
 
@@ -42,6 +33,7 @@ mb.on('ready', () => {
 
 mb.on('hide', () => {
     console.log('window closed')
+    console.log(global.feedBack)
     mb.window.loadFile('index.html')
 })
 
@@ -62,28 +54,7 @@ ipcMain.on('login-message', (event, email, password) => {
 });
 
 ipcMain.on('feedback', (event) => {
-    var options = {
-        method: 'PUT',
-        uri: 'https://75rnmqrek8.execute-api.us-east-2.amazonaws.com/hack/messages',
-        multipart: [{
-                'content-type': 'application/json',
-                'Authorization': localStorage.getItem('token'),
-                body: JSON.stringify({
-                    "type": "feedback",
-                    "recipient": "iluvcakeyt@gmail.com",
-                    "payload": ""
-                })
-            },
-            { body: 'I am an attachment' },
-            { body: fs.createReadStream('image.png') }
-        ]
-    };
-
-    request(options, function(error, response, body) {
-        if (error) {
-            console.log(error);
-        }
-    })
+    console.log(yes);
 });
 
 
@@ -92,18 +63,18 @@ function ShowNotification(title, body) {
     var notification = new Notification({ title: title, body: body, icon: 'icons/icon-big.png' })
     notification.show()
     notification.on('click', () => {
-      if (notification.title == 'HUZZAH! 🎉') {
-        mb.window.loadFile('pages/popups/recieving/thanks.html')
-      } else if (notification.title == 'Jeez! 😳') {
-        mb.window.loadFile('pages/popups/recieving/feedback.html')
-      } else {
+        if (notification.title == 'HUZZAH! 🎉') {
+            mb.window.loadFile('pages/popups/recieving/thanks.html')
+        } else if (notification.title == 'Jeez! 😳') {
+            mb.window.loadFile('pages/popups/recieving/feedback.html')
+        } else {
+            mb.window.loadFile('pages/popups/recieving/check.html')
+        }
         mb.window.loadFile('pages/popups/recieving/check.html')
-      }
-        mb.window.loadFile('pages/popups/recieving/check.html')
-      notification.removeAllListeners(['click'])
-      mb.showWindow()
+        notification.removeAllListeners(['click'])
+        mb.showWindow()
     })
-  }
+}
 
 function RegisterUser(name, firstname, email, password) {
     var attributeList = [];

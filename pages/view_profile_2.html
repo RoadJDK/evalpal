@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <link rel="stylesheet" href="../style.css">
+    <link href="https://unpkg.com/tailwindcss@^2/dist/tailwind.min.css" rel="stylesheet">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Roboto+Mono&display=swap" rel="stylesheet">
+    <script src="profile.js"></script>
+    <title>View Profile</title>
+</head>
+
+<body>
+    <div class="container p-12">
+        <!-- Heading -->
+        <div class="grid grid-flow-col grid-cols-3 gap-1">
+            <div class="text-4xl font-bold mb-8 col-span-2">
+                Justin Ceronio
+            </div>
+            <div>
+                <a href="./home.html">
+                    <button class="bg-gray-100 hover:bg-gray-300 py-2 px-4 rounded-full underline tracking-wider w-8/12">
+                        return
+                    </button>
+                </a>
+            </div>
+        </div>
+
+        <h2 class="text-2xl tracking-wider">
+            Human Resources
+        </h2>
+        <div class="space-x-7">
+            <a href="">
+                <button class="bg-red-100 hover:bg-red-300 py-2 px-4 rounded-full mt-8 underline tracking-wider w-1/4" id="feedback">
+                    feedback
+                </button>
+            </a>
+            <a href="" id="thank">
+                <button class="bg-blue-100 hover:bg-blue-300 py-2 px-4 rounded-full mt-8 ml-4 underline tracking-wider w-1/4">
+                    thank
+                </button>
+            </a>
+            <a href="">
+                <button class="bg-green-100 hover:bg-green-300 py-2 px-4 rounded-full mt-8 ml-4 underline tracking-wider w-1/4" id="checkin">
+                    check-in
+                </button>
+            </a>
+        </div>
+        <div class="mt-8 mb-2">
+            <p>Tell me something I didn't know ;)</p>
+        </div>
+        <br>
+        <hr>
+        <h3 class="text-base font-semibold tracking-wider mt-4">
+            Feedback received
+        </h3>
+    </div>
+</body>
+
+</html>
