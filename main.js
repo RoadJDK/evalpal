@@ -21,7 +21,7 @@ let refreshToken
 let loggedIn = false
 
 mb.on('ready', () => {
-    //mb.window.webContents.openDevTools()
+    // mb.window.webContents.openDevTools()
     console.log('app is ready');
     APIListener('praise')
   });
@@ -49,7 +49,7 @@ ipcMain.on('login-message', (event, email, password) => {
   function showNotification (title, body) {
     var notification = new Notification({ title: title, body: body, icon: 'icons/icon-big.png' })
     notification.on('click', () => {
-      mb.window.loadFile('pages/popups/thanks.html')
+      mb.window.loadFile('pages/popups/receiving/thanks.html')
       notification.removeAllListeners(['click'])
       mb.showWindow()
     })
