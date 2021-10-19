@@ -1,28 +1,16 @@
 window.onload = function() {
+    const { ipcRenderer } = require('electron')
+
     let signupbutton = document.getElementById('signup')
     let login = document.getElementById('login')
 
     if (signupbutton != null) {
         signupbutton.addEventListener('click', function() {
-    
-            let firstname = document.getElementById("firstname_s").value;
-            let name = document.getElementById("name_s").value;
-            let email = document.getElementById("email_s").value;
-            let password = document.getElementById("password_s").value;
-
-            const { ipcRenderer } = require('electron')
-
-            ipcRenderer.send('signup-message', firstname, name, email, password)
+            ipcRenderer.send('signup-message', document.getElementById("firstname_s").value, document.getElementById("name_s").value, document.getElementById("email_s").value, document.getElementById("password_s").value)
         })
     } else {
         login.addEventListener('click', function() {
-    
-            let email = document.getElementById("email_l").value;
-            let password = document.getElementById("password_l").value;
-        
-            const { ipcRenderer } = require('electron')
-        
-            ipcRenderer.send('login-message', email, password )
+            ipcRenderer.send('login-message', document.getElementById("email_l").value, document.getElementById("password_l").value)
         })
     }
 }
